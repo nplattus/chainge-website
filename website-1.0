@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chainge STL - Community Engagement Redefined</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        body {
+            font-family: 'Poppins', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #00C9A7, #005BEA);
+            color: #fff;
+        }
+
+        header {
+            background-color: #ffffff22;
+            text-align: center;
+            padding: 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            color: #ffffff;
+        }
+
+        header nav a {
+            margin: 0 1rem;
+            text-decoration: none;
+            color: #FFC857;
+            font-weight: bold;
+        }
+
+        header nav a:hover {
+            text-decoration: underline;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            padding: 4rem;
+            justify-items: center;
+        }
+
+        .features > .feature-card:nth-child(4) {
+            grid-column: 2 / 3;
+        }
+
+        .feature-card {
+            background: #ffffff22;
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .feature-card h3 {
+            color: #FFC857;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card p {
+            color: #ffffff;
+        }
+
+        footer {
+            background-color: #ffffff22;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 1rem;
+            color: #FFC857;
+        }
+
+        .cta-button {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 1rem 2rem;
+            background-color: #FFC857;
+            color: #005BEA;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #fff;
+            color: #00C9A7;
+        }
+
+        input[type="email"] {
+            padding: 1rem;
+            border-radius: 25px;
+            border: none;
+            width: 300px;
+            font-size: 1rem;
+            margin-right: 1rem;
+        }
+
+        input[type="email"]:focus {
+            outline: none;
+            box-shadow: 0 0 10px rgba(0, 201, 167, 0.8);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Chainge STL</h1>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#features">Features</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <div class="hero">
+        <h2>Empower Your Community with Chainge</h2>
+        <p>Join localized hubs to connect, organize, and drive real-world impact in STL.</p>
+        <form id="signup-form" style="margin-top: 2rem;">
+            <input type="email" id="email" name="email" placeholder="Enter your email to join the Chainge" required>
+            <button type="submit" class="cta-button">Sign Up</button>
+        </form>
+        <p id="message" style="margin-top: 1rem; color: #FFC857;"></p>
+    </div>
+
+    <section id="features" class="features">
+        <div class="feature-card">
+            <h3>Localized Chainges</h3>
+            <p>Join or create community-specific hubs to tackle local challenges and drive impact.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Identity-Based Collaboration</h3>
+            <p>Use real-world tags to ensure authentic, meaningful engagement and collaboration.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Actionable Tools</h3>
+            <p>Organize petitions, plan events, and drive community action effortlessly.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Gamified Engagement</h3>
+            <p>Stay motivated with civic challenges and track the impact of your contributions.</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Chainge STL. All Rights Reserved.</p>
+        <p>Designed to empower communities, one connection at a time.</p>
+    </footer>
+
+    <script>
+        document.getElementById('signup-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const email = document.getElementById('email').value;
+            
+            fetch('https://your-backend-api.com/collect-email', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email })
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('message').innerText = "Thank you for signing up!";
+                document.getElementById('email').value = '';
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById('message').innerText = "Something went wrong. Please try again later.";
+            });
+        });
+    </script>
+</body>
+</html>
